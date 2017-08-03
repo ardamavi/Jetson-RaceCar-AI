@@ -6,10 +6,11 @@ from get_data import get_img
 from scipy.misc import imresize
 from keras.models import model_from_json
 
-def predict(model, X):
-    X = imresize(X, (700, 700, 3))
-    X = [X, X]
-    Y = model.predict(X)
+def predict(model, img, lidar_data):
+    img = imresize(img, (700, 700, 3))
+    img = np.array(img).reshape(1, 700, 700, 3)
+    lidar_data = np.array(lidar_data).reshape(1, 3)
+    Y = model.predict([img], [lidar_data])
     return Y
 
 if __name__ == '__main__':
@@ -23,4 +24,4 @@ if __name__ == '__main__':
     model = model_from_json(model)
     # Getting weights
     model.load_weights("Data/Model/weights.h5")
-    print(predict(model, [[img,img], [lidar_data]]))
+    print(predict(model, img, lidar_data))

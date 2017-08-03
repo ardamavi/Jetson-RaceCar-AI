@@ -23,7 +23,6 @@ def get_data():
         Y_2.append(float(one_data[2]))
     X_1 = np.array(X_1).reshape(len(datasets), 700, 700, 3)
     X_2 = np.array(X_2).reshape(len(datasets), 3)
-
-    X = np.stack([[X_1], [X_2]])
-    Y = np.stack([[Y_1], [Y_2]])
-    return X, Y
+    Y_1 = np.array(Y_1).reshape(len(datasets), 1)
+    Y_2 = np.array(Y_2).reshape(len(datasets), 1)
+    return X_1, X_2, Y_1, Y_2

@@ -8,8 +8,11 @@ def get_lidar_data():
             pass
         lidar.start_scanning()
         scans = lidar.get_scans()
+        data = []
+        for scan in itertools.islice(sweep.get_scans(), 5):
+            data.append([scan[0], scan[1], scan[2]])
         lidar.stop_scanning()
-    return
+    return data
 
 def start_lidar():
     set_motor_speed(speed=5)
