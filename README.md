@@ -26,7 +26,7 @@ For more information look up Jim's blog post [JetsonHacks - Sweep Software Insta
 `tensorboard --logdir=Data/Checkpoints/./logs`
 
 ### Installing TensorFlow for Jetson TX1:
-Look up my [<b>TensorFlow-For-Jetson-TX1<b/>](https://github.com/ardamavi/TensorFlow-For-Jetson-TX1) repository.
+Look up my <b>[TensorFlow-For-Jetson-TX1](https://github.com/ardamavi/TensorFlow-For-Jetson-TX1)</b> repository.
 
 ### Important Notes:
 - Used Python Version: 3.6
@@ -34,4 +34,4 @@ Look up my [<b>TensorFlow-For-Jetson-TX1<b/>](https://github.com/ardamavi/Tensor
 - Install [Sweeppy](https://github.com/scanse/sweep-sdk/tree/master/sweeppy)
 - Install [OpenCV with CUDA for Jetson TX1](http://docs.opencv.org/3.2.0/d6/d15/tutorial_building_tegra_cuda.html)
 
-##### I did it in my internship at OpenZeka.
+#### In my internship at OpenZeka - NVDIA DLI
