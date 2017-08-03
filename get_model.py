@@ -58,7 +58,7 @@ def get_model():
 
     model = Model(inputs=[img_inputs, lidar_inputs], outputs=[direction, speed])
 
-    model.compile(loss='binary_crossentropy', optimizer='adadelta', metrics=['accuracy'])
+    model.compile(loss='mse', optimizer='adadelta', metrics=['accuracy'])
 
     print(model.summary())
 
