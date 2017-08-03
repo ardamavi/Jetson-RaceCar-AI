@@ -34,4 +34,4 @@ Look up my <b>[TensorFlow-For-Jetson-TX1](https://github.com/ardamavi/TensorFlow
 - Install [Sweeppy](https://github.com/scanse/sweep-sdk/tree/master/sweeppy)
 - Install [OpenCV with CUDA for Jetson TX1](http://docs.opencv.org/3.2.0/d6/d15/tutorial_building_tegra_cuda.html)
 
-#### In my internship at OpenZeka - NVDIA DLI
+#### In my internship at OpenZeka - NVIDIA DLI
