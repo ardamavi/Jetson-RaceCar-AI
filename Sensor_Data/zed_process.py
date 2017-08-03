@@ -14,14 +14,13 @@ stereo = cv2.StereoBM_create(numDisparities=16, blockSize=15)
 
 # Take a picture:
 def get_zed_data(capture):
-    while True:
-        ret, img = capture.read()
+    ret, img = capture.read()
 
-        img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+    # img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
-        img_left = img[0:376, 0:672]
-        img_right = img[0:376, 672:1344]
+    img_left = img[0:376, 0:672]
+    img_right = img[0:376, 672:1344]
 
-        disparity = stereo.compute(img_left,img_right)
+    # disparity = stereo.compute(img_left,img_right)
 
     return disparity
