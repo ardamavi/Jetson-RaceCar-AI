@@ -16,11 +16,14 @@ def get_data():
     datasets = all_file.split('\n')
     for data in datasets:
         one_data = data.split(' ')
-        img = get_img('Data/Train_Data/'+one_data[0]+'.jpg')
-        X_1.append([img, img])
+        img = get_img('Data/Train_Data/'+one_data[0])
+        X_1.append(img)
         X_2.append([float(one_data[3]), float(one_data[4]), float(one_data[5])])
         Y_1.append(float(one_data[1]))
         Y_2.append(float(one_data[2]))
-    X = np.array([X_1,X_2])
-    Y = np.array([Y_1,Y_2])
+    X_1 = np.array(X_1).reshape(len(datasets), 700, 700, 3)
+    X_2 = np.array(X_2).reshape(len(datasets), 3)
+
+    X = np.stack([[X_1], [X_2]])
+    Y = np.stack([[Y_1], [Y_2]])
     return X, Y
