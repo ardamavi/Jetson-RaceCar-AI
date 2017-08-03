@@ -1,9 +1,9 @@
 # Arda Mavi
 
-from predict import predict, get_ready_model
 from multiprocessing import Process
-from Sensor_Data.lidar_process import get_lidar_data
+from predict import predict, get_ready_model
 from Sensor_Data.zed_process import get_zed_data
+from Sensor_Data.lidar_process import get_lidar_data
 
 zed_data = []
 lidar_data = []
