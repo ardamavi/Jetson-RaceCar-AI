@@ -21,20 +21,4 @@ def get_zed_data(capture):
         img_right = img[0:720, 1280:2560]
 
         # disparity = stereo.compute(img_left,img_right)
-
-        cv2.imshow('Left',img_left)
-        cv2.imshow('Right',img_right)
-
-        if cv2.waitKey(1) == 27: # Decimal 27 = Esc
-                break
-
-    cv2.destroyAllWindows()
-
-
-
-    return two_image
-
-
-cap = get_capture()
-get_zed_data(cap)
-release_capture()
+    return img
