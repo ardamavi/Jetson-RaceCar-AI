@@ -13,11 +13,11 @@ data_flow = Value('i', True)
 
 def zed_data_process(cap):
     while data_flow.value:
-        zed_data.value = np.array(imresize(np.array(get_zed_data(cap)), (500, 500, 1)))
+        zed_data = np.array(imresize(np.array(get_zed_data(cap)), (500, 500, 1)))
 
 def lidar_data_process():
     while data_flow.value:
-        lidar_data.value = np.array(get_lidar_data())
+        lidar_data = np.array(get_lidar_data())
 
 def ai():
     print('Preparing model ...')
@@ -47,7 +47,7 @@ def ai():
     print('AI will start in a short time.')
 
     while True:
-        while zed_data.value == [] or lidar_data.value == []:
+        while zed_data == [] or lidar_data == []:
             pass
         try:
             print(predict(model, zed_data.value, lidar_data.value))
