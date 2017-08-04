@@ -1,5 +1,6 @@
 # Arda Mavi
 from sweeppy import Sweep
+import itertools
 
 def get_lidar_data():
     start_lidar()
@@ -9,8 +10,9 @@ def get_lidar_data():
         lidar.start_scanning()
         scans = lidar.get_scans()
         data = []
-        for scan in itertools.islice(sweep.get_scans(), 0, None):
-            data.append([scan[0], scan[1], scan[2]])
+        for scan in itertools.islice(lidar.get_scans(), 1):
+            datas = scan[0]
+            data.append([datas[0], datas[1], datas[2]])
         lidar.stop_scanning()
     return data
 
