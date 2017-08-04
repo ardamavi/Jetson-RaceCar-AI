@@ -9,7 +9,7 @@ def get_lidar_data():
         lidar.start_scanning()
         scans = lidar.get_scans()
         data = []
-        for scan in itertools.islice(sweep.get_scans(), 5):
+        for scan in itertools.islice(sweep.get_scans(), 0, None):
             data.append([scan[0], scan[1], scan[2]])
         lidar.stop_scanning()
     return data
