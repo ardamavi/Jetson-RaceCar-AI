@@ -47,10 +47,10 @@ def ai():
     print('AI will start in a short time.')
 
     while True:
-        while zed_data == [] or lidar_data == []:
+        while np.array(zed_data) == [] or np.array(lidar_data) == []:
             pass
         try:
-            print(predict(model, zed_data.value, lidar_data.value))
+            print(predict(model, np.array(zed_data), np.array(lidar_data)))
         except:
             print('AI Error !')
             break
