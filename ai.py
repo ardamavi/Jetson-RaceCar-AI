@@ -1,5 +1,6 @@
 # Arda Mavi
 
+import time
 import numpy as np
 from scipy.misc import imresize
 from multiprocessing import Process, Value, Array
@@ -45,12 +46,13 @@ def ai():
     print('Lidar thread start.')
 
     print('AI will start in a short time.')
+    time.sleep(2)
 
     while True:
         stereo_img = np.array(zed_data)
         lidar_map = np.array(lidar_data)
         try:
-            if stereo_img.size == 1 and lidar_map.size == 1:
+            if stereo_img.size != 0 and lidar_map.size != 0:
                 print(predict(model, stereo_img, lidar_map))
         except:
             print('AI Error !')
