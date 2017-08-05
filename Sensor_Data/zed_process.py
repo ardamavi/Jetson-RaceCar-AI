@@ -10,6 +10,9 @@ def get_capture(camera=1): # Camera 0 is jetson's embeded camera.
 def release_capture(capture):
     capture.release()
 
+# For 3D Picture:
+stereo = cv2.StereoBM_create(numDisparities=16, blockSize=15)
+
 # Take a picture:
 def get_zed_data(capture):
     ret, img = capture.read()
@@ -19,8 +22,6 @@ def get_zed_data(capture):
     img_left = img[0:376, 0:672]
     img_right = img[0:376, 672:1344]
 
-    # For Stereo Picture:
-    # stereo = cv2.StereoBM_create(numDisparities=16, blockSize=15)
-    # disparity = stereo.compute(img_left,img_right)
+    disparity = stereo.compute(img_left,img_right)
 
-    return img_right
+    return disparity

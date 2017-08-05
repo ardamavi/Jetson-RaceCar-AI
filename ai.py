@@ -2,14 +2,14 @@
 
 import numpy as np
 from scipy.misc import imresize
-from multiprocessing import Process, Value, Array
+from threading import Thread
 from predict import predict, get_ready_model
 from Sensor_Data.zed_process import get_zed_data, get_capture, release_capture
 from Sensor_Data.lidar_process import get_lidar_data, start_lidar, stop_lidar
 
-zed_data = Array('d', [])
-lidar_data = Array('d', [])
-data_flow = Value('i', True)
+zed_data = np.array([])
+lidar_data = np.array([])
+data_flow = False
 
 def zed_data_process(cap):
     while data_flow.value:
@@ -32,30 +32,30 @@ def ai():
     cap = get_capture()
     print('Camera ready.')
 
-    data_flow.value = True
+    data_flow = True
 
-    print('Processes starting')
+    print('Threads starting')
     # Start getting data process:
-    camera_process = Process(target=zed_data_process, args=(cap,))
+    camera_process = Thread(target=zed_data_process, args=(cap,))
     camera_process.start()
-    print('Camera process start.')
+    print('Camera thread start.')
 
-    lidar_process = Process(target=lidar_data_process)
+    lidar_process = Thread(target=lidar_data_process)
     lidar_process.start()
-    print('Lidar process start.')
+    print('Lidar thread start.')
 
     print('AI will start in a short time.')
 
     while True:
-        while np.array(zed_data) == [] or np.array(lidar_data) == []:
+        while zed_data.size == 0 or lidar_data.size == 0:
             pass
         try:
-            print(predict(model, np.array(zed_data), np.array(lidar_data)))
+            print(predict(model, zed_data, lidar_data))
         except:
             print('AI Error !')
             break
 
-    data_flow.value = False
+    data_flow = False
     camera_process.join()
     lidar_process.join()
 
