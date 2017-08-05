@@ -2,6 +2,9 @@
 Artificial intelligence for Jetson RaceCar<br/>
 Autonomous race car with deep learning.
 
+### Race Car's Photo<br/>
+<img src="Data/cars_photo.jpg" width="300">
+
 ### Hardware
 + System:<br/>
 NVIDIA Jetson TX1 with Jetpack 3.0
