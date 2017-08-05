@@ -21,9 +21,9 @@ def get_model():
 
     conv_1 = Conv2D(32, (4,4), strides=(2,2))(img_inputs)
 
-    conv_2 = Conv2D(64, (4,4), strides=(2,2))(conv_1)
+    conv_2 = Conv2D(32, (4,4), strides=(2,2))(conv_1)
 
-    conv_3 = Conv2D(64, (3,3), strides=(1,1))(conv_2)
+    conv_3 = Conv2D(32, (3,3), strides=(1,1))(conv_2)
     act_3 = Activation('relu')(conv_3)
 
     pooling_1 = MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(act_3)
@@ -32,7 +32,7 @@ def get_model():
 
     fc = Dense(32)(flat_1)
 
-    lidar_fc = Dense(90)(lidar_inputs)
+    lidar_fc = Dense(32)(lidar_inputs)
 
     concatenate_layer = concatenate([fc, lidar_fc])
 
