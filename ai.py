@@ -12,12 +12,14 @@ lidar_data = np.array([])
 data_flow = False
 
 def zed_data_process(cap):
-    while data_flow.value:
-        zed_data = np.array(imresize(np.array(get_zed_data(cap)), (500, 500, 1)))
+    while True:
+        if data_flow:
+            zed_data = np.array(imresize(np.array(get_zed_data(cap)), (500, 500, 1)))
 
 def lidar_data_process():
-    while data_flow.value:
-        lidar_data = np.array(get_lidar_data())
+    while True:
+        if data_flow:
+            lidar_data = np.array(get_lidar_data())
 
 def ai():
     print('Preparing model ...')
