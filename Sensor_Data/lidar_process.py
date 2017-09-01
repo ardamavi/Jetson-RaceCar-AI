@@ -3,7 +3,6 @@ from sweeppy import Sweep
 import itertools
 
 def get_lidar_data():
-    start_lidar()
     with Sweep('/dev/ttyUSB0') as lidar:
         while not lidar.get_motor_ready():
             pass
